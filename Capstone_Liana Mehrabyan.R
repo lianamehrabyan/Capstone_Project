@@ -158,17 +158,12 @@ ggplot(users_0,aes(sample=log(avg_duration)))+stat_qq()+ggthemes::theme_economis
 ggplot(users_1,aes(log(avg_duration)))+geom_histogram(bins=200)+ggtitle("Moderate Users")+ggthemes::theme_economist()+xlab("Average Duration")
 ggplot(users_1,aes(sample=log(avg_duration)))+stat_qq()+ggthemes::theme_economist()+ggtitle("QQ Plot")
 
-########
-#  !!  #
-########
+
 users_2[which(log(users_2$avg_duration)<3.5),"avg_duration"]<-mean(users_2$avg_duration)
 ggplot(users_2,aes(log(avg_IAT)))+geom_histogram(bins=200)+ggtitle("Average Users")+ggthemes::theme_economist()+xlab("Average IAT")
 ggplot(users_2,aes(sample=log(avg_IAT)))+stat_qq()+ggthemes::theme_economist()+ggtitle("QQ Plot")
 
-users_2<-users_2[log(users_2$avg_IAT)>9,]
-set.seed(22)
-index<-sample(which(log(users_2$avg_IAT)>12 & log(users_2$avg_IAT)<12.1),250)
-users_2<-users_2[-index,]
+
 
 ggplot(users_1,aes(log(avg_duration)))+geom_histogram(bins=200)+ggtitle("Average Session Duration")+ggthemes::theme_economist()
 ggplot(users_1,aes(sample=log(avg_duration)))+stat_qq()+ggthemes::theme_economist()+ggtitle("")
